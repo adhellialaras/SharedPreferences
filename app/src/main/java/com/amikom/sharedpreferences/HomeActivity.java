@@ -1,5 +1,6 @@
 package com.amikom.sharedpreferences;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 import com.amikom.sharedpreferences.helper.SharedPref;
 
 public class HomeActivity extends AppCompatActivity {
-    Button btnFragment1, btnFragment2;
+    Button btnFragment1, btnFragment2, btnLogout;
     TextView username;
     Fragment fragment;
 
@@ -43,6 +44,7 @@ public class HomeActivity extends AppCompatActivity {
     private void initialize() {
         btnFragment1 = findViewById(R.id.btn_fragment1);
         btnFragment2 = findViewById(R.id.btn_fragment2);
+        btnLogout = findViewById(R.id.btn_logout);
     }
 
     private void onClick() {
@@ -61,5 +63,15 @@ public class HomeActivity extends AppCompatActivity {
                 loadFragment(fragment);
             }
         });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
+
 }
